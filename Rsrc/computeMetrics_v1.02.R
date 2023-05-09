@@ -5,11 +5,13 @@ met <-1 #select the MSE decomp method to be applied
 source("Normalized_RMSE.R")
 
 ## First create a variable with the data to compute the statistics
+### in cumputemetrics_v1.02.R you need to choose here the specie
 dataFstats <- dataX[dataX$yearSim>0]
-
+#dataFstats <- dataFstats[dataFstats$speciesID==1] #pine 
+#dataFstats <- dataFstats[dataFstats$speciesID==2] #spruce 
 #### 1. Compute the metrics
 
-nPlaces <- unique(dataFstats$stand)#unique(dataFstats$siteID)
+nPlaces <- unique(dataFstats$stand) #by stand
 outputStats <- list()
 MSEdecomp <- list()
 a<-1
@@ -143,8 +145,8 @@ rm(met,dataFstats,nPlaces,a,b)
 outputStats <- rbindlist(outputStats, use.names=FALSE)
 MSEdecomp <- rbindlist(MSEdecomp, use.names = FALSE)
 
-write.csv(outputStats,file = 'statistics.csv')  #uncoment this two lines to save the csv file
-write.csv(MSEdecomp, file = 'MSEdecomp.csv' )
+write.csv(outputStats,file = 'statistics-bystand-spruce.csv')  #uncoment this two lines to save the csv file
+write.csv(MSEdecomp, file = 'MSEdecomp-bystand-spruce.csv' ) ##change the name as needed
 
 ##### 2 Graphs for MSE decomposition
 

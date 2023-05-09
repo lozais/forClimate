@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 Rsrc/BACKUP/
+*.csv
+*.xlsx
+*.xls
